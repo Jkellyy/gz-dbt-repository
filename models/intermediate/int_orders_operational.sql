@@ -7,6 +7,9 @@ SELECT
     ,SUM(quantity) AS quantity
     ,SUM(revenue) AS revenue
     ,SUM(purchase_cost) AS purchase_cost
+    ,SUM(logcost) AS logcost
+    ,SUM(shipping_fee) AS shipping_fee
+    ,SUM(margin) AS margin
 FROM {{ref("int_orders_margin")}}
 LEFT JOIN {{ref("stg_raw__ship")}}
 ON (int_orders_margin.orders_id=stg_raw__ship.orders_id)
