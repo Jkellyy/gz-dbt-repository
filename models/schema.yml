@@ -52,22 +52,34 @@ sources:
            - name: ship_cost
              description: shipping cost of the company
 
+
+
+
        - name: adwords
          identifier: raw_gz_adwords
          description: adwords campaign info 
          columns:
            - name: date_date
              description: campaign date
+             tests:
+              - not_null
            - name: paid_source
              description: paid source 
            - name: campaign_key 
              description: campaign key 
+             tests:
+              - not_null
            - name: camPGN_name
              description: name of the campaign  
            - name: ads_cost
              description: cost of the add
            - name: impression
            - name: click
+         tests:
+           - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+               - date_date
+               - campaign_key
 
        - name: bing
          identifier: raw_gz_bing
@@ -75,16 +87,25 @@ sources:
          columns:
            - name: date_date
              description: campaign date
+             tests:
+              - not_null
            - name: paid_source
              description: paid source 
            - name: campaign_key 
              description: campaign key 
+             tests:
+              - not_null
            - name: camPGN_name
              description: name of the campaign  
            - name: ads_cost
              description: cost of the add
            - name: impression
            - name: click
+         tests:
+           - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+               - date_date
+               - campaign_key
 
        - name: criteo
          identifier: raw_gz_criteo
@@ -92,16 +113,25 @@ sources:
          columns:
            - name: date_date
              description: campaign date
+             tests:
+              - not_null
            - name: paid_source
              description: paid source 
            - name: campaign_key 
              description: campaign key 
+             tests:
+              - not_null
            - name: camPGN_name
              description: name of the campaign  
            - name: ads_cost
              description: cost of the add
            - name: impression
            - name: click
+         tests:
+           - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+               - date_date
+               - campaign_key
 
 
        - name: facebook
@@ -110,16 +140,27 @@ sources:
          columns:
            - name: date_date
              description: campaign date
+             tests:
+              - not_null
            - name: paid_source
              description: paid source 
            - name: campaign_key 
              description: campaign key 
+             tests:
+              - not_null
            - name: camPGN_name
              description: name of the campaign  
            - name: ads_cost
              description: cost of the add
            - name: impression
            - name: click
+         tests:
+           - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+               - date_date
+               - campaign_key
+
+
 
 models:
    - name: int_orders_margin
@@ -135,5 +176,16 @@ models:
        - name: purchase_cost
        - name: margin
 
-          
-               
+   - name: int_campaigns_day
+     description: overview of impressions and click per day, all campaigns summed 
+     columns:
+      - name: date_date
+      - name: ads_cost
+        tests:
+          - not_null
+      - name: ads_impressions
+        tests:
+          - not_null
+      - name: ads_clicks
+        tests:
+          - not_null
