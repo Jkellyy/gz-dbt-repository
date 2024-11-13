@@ -53,4 +53,19 @@ sources:
              description: shipping cost of the company
 
 
-         
+models:
+   - name: int_orders_margin
+     description: calculation of margin
+     columns:
+       - name: orders_id
+         tests:
+          - unique
+          - not_null
+       - name: date_date
+       - name: revenue
+       - name: quantity
+       - name: purchase_cost
+       - name: margin
+
+          
+               
