@@ -23,5 +23,5 @@ SELECT date_date
  --   ,ROUND(SUM(ship_cost),0) AS ship_cost
 FROM {{ref("int_orders_operational")}}
 GROUP BY date_date
-
+ORDER BY date_date DESC
 
