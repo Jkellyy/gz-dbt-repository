@@ -8,6 +8,8 @@
 --Total log costs
 --Total quantity of products sold.
 
+{{ config(materialized='table')}}
+
 SELECT date_date
     ,ROUND(SUM(revenue),2) as tot_revenue
     ,COUNT(orders_id) as nb_transaction
