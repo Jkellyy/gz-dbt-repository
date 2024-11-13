@@ -52,6 +52,74 @@ sources:
            - name: ship_cost
              description: shipping cost of the company
 
+       - name: adwords
+         identifier: raw_gz_adwords
+         description: adwords campaign info 
+         columns:
+           - name: date_date
+             description: campaign date
+           - name: paid_source
+             description: paid source 
+           - name: campaign_key 
+             description: campaign key 
+           - name: camPGN_name
+             description: name of the campaign  
+           - name: ads_cost
+             description: cost of the add
+           - name: impression
+           - name: click
+
+       - name: bing
+         identifier: raw_gz_bing
+         description: bing campaign info 
+         columns:
+           - name: date_date
+             description: campaign date
+           - name: paid_source
+             description: paid source 
+           - name: campaign_key 
+             description: campaign key 
+           - name: camPGN_name
+             description: name of the campaign  
+           - name: ads_cost
+             description: cost of the add
+           - name: impression
+           - name: click
+
+       - name: criteo
+         identifier: raw_gz_criteo
+         description: criteo campaign info 
+         columns:
+           - name: date_date
+             description: campaign date
+           - name: paid_source
+             description: paid source 
+           - name: campaign_key 
+             description: campaign key 
+           - name: camPGN_name
+             description: name of the campaign  
+           - name: ads_cost
+             description: cost of the add
+           - name: impression
+           - name: click
+
+
+       - name: facebook
+         identifier: raw_gz_facebook
+         description: criteo campaign info 
+         columns:
+           - name: date_date
+             description: campaign date
+           - name: paid_source
+             description: paid source 
+           - name: campaign_key 
+             description: campaign key 
+           - name: camPGN_name
+             description: name of the campaign  
+           - name: ads_cost
+             description: cost of the add
+           - name: impression
+           - name: click
 
 models:
    - name: int_orders_margin
