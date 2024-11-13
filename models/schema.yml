@@ -1,0 +1,71 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    tables:
+       - name: sales
+         identifier: raw_gz_sales
+         description: sales of Greenweez / we have on row per product_id found in each orders_id
+         columns:
+           - name: date_date
+             description: date of purchase
+           - name: orders_id
+             description: id of the order 
+           - name: product_id
+             description: id of the product
+           - name: revenue
+             description: income of the purchase
+           - name: quantity
+             description: quantity of product ordered in the purchase
+
+         tests:
+           - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+               - orders_id
+               - pdt_id
+        
+       - name: product
+         identifier: raw_gz_product
+         description: product price
+         columns:
+           - name: products_id
+             description: id of the product
+             tests:
+               - unique
+               - not_null
+           - name: purchase_price
+             description: price of the product
+       - name: ship
+         identifier: raw_gz_ship
+         description: follow up of shipping cost per order
+         columns:
+           - name: orders_id
+             description: id of the order
+             tests:
+               - unique
+               - not_null
+           - name: shipping_fee
+             description: shipping cost for the customer
+           - name: logcost 
+             description: cost of logistig 
+           - name: ship_cost
+             description: shipping cost of the company
+
+
+models:
+   - name: int_orders_margin
+     description: calculation of margin
+     columns:
+       - name: orders_id
+         tests:
+          - unique
+          - not_null
+       - name: date_date
+       - name: revenue
+       - name: quantity
+       - name: purchase_cost
+       - name: margin
+
+          
+               
