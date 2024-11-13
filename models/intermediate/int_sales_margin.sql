@@ -11,6 +11,7 @@ ON (products_id=product_id)
 )
 
 SELECT *,
-    (revenue-purchase_cost) AS margin
+    (revenue-purchase_cost) AS margin,
+    {{ margin_percent('total_revenue','total_purchase_cost')}} AS margin_percent
 from cal_purchasecost
 
