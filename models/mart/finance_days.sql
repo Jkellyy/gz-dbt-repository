@@ -17,5 +17,9 @@ SELECT date_date
     ,ROUND(SUM(logcost),2) AS tot_logcost
     ,ROUND(SUM(quantity),2) AS prod_sold
     ,ROUND(SUM(revenue)/(COUNT(orders_id)),2) AS average_basket
+    ,ROUND(SUM(margin),0) AS margin
+ --   ,ROUND(SUM(ship_cost),0) AS ship_cost
 FROM {{ref("int_orders_operational")}}
 GROUP BY date_date
+
+
