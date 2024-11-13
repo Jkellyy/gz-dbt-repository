@@ -189,3 +189,10 @@ models:
       - name: ads_clicks
         tests:
           - not_null
+   - name: finance_campaigns_day
+     description: ads margin with financial kpi
+     columns:
+       - name: ads_margin
+         tests: 
+          - not_null
+          
