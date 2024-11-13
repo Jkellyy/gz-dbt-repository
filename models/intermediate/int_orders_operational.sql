@@ -10,6 +10,7 @@ SELECT
     ,SUM(logcost) AS logcost
     ,SUM(shipping_fee) AS shipping_fee
     ,SUM(margin) AS margin
+    ,SUM(ship_cost) AS ship_cost
 FROM {{ref("int_orders_margin")}}
 LEFT JOIN {{ref("stg_raw__ship")}}
 ON (int_orders_margin.orders_id=stg_raw__ship.orders_id)
